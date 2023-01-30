@@ -1,0 +1,49 @@
+{
+  "postgres": {
+    "username": "inboundfaxing",
+    "passwordSecretsPath": {
+      "us-east-1": "iac/datafabric/development/faxingservices/faxing-us-east-1-dev-db-nonprod",
+      "us-west-2": "iac/datafabric/development/faxingservices/faxing-us-west-2-devw2-db-nonprod"
+    },
+    "host": {
+      "us-east-1": "faxing-us-east-1-dev-db-nonprod.c0zfdtzbnxtg.us-east-1.rds.amazonaws.com",
+      "us-west-2": "faxing-us-west-2-devw2-db-nonprod.cfa8h2aggest.us-west-2.rds.amazonaws.com"
+    },
+    "database": "inboundfaxing",
+    "port": "5432",
+    "schema": "inboundfaxing",
+    "createTable": true
+  },
+  "aws": {
+    "sqsFileuploadUrl": {
+      "us-east-1": "https://sqs.us-east-1.amazonaws.com/660811125625/faxing-947726-dev-fax_upload_trigger",
+      "us-west-2": "https://sqs.us-west-2.amazonaws.com/660811125625/faxing-947726-devw2-fax_upload_trigger"
+    },
+    "s3bucket": {
+      "us-east-1": "inbound-fax-image-us-east-1-dev",
+      "us-west-2": "inbound-fax-image-us-west-2-devw2"
+    },
+    "presignedUrl": {
+      "getObjectExpiryPath": "/development/presigned_url/get_object_expiry",
+      "putObjectExpiryPath": "/development/presigned_url/put_object_expiry"
+    },
+    "stuckFax": {
+      "retryInterval": "/development/stuck_fax/retry_interval",
+      "maxRetryInterval": "/development/stuck_fax/max_retry_interval",
+      "retryCronControlPath": "/development/stuck_fax/allowRetryCronRun"
+    },
+    "validateMD5HexDigestPath": "/development/validateMD5HexDigest"
+  },
+  "mdp": {
+    "mdpURL": "https://dev100.athenahealth.com",
+    "mdpPort": 50490,
+    "mdpPath": "htservices_external/ecosystem/api/tokenproxy.esp/v1/"
+  },
+  "uiam": {
+    "serviceScopes": "athena/service/Athenanet.*",
+    "tokenEndpointURL": "https://athenahealthpoc.okta.com/oauth2/aus13kbtj4HAdI3451t7/v1/token",
+    "clientIdPath": "/development/faxing_gateway_client_id",
+    "clientSecretPath": "/development/faxing_gateway_client_secret"
+  },
+  "secretKeyPath": "/development/inbound_api_key"
+}

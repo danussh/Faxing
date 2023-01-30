@@ -1,0 +1,23 @@
+{
+  "status": "dev",
+  "service": {
+    "name": "inboundfax",
+    "suite": "athena",
+    "domain": "athena.io",
+    "urlScheme": "https"
+  },
+  "contacts": {},
+  "notifications": {
+    "events": {}
+  },
+  "appFabric": {
+    "version": 1
+  },
+  "dataFabric": {},
+  "environments": {},
+  "displayName": "Inbound fax",
+  "description": "Inbound faxing microservice",
+  "applicationId": "9234f972-6206-4812-8e41-f00240777a52",
+  "teamId": 88,
+  "type": "microservice"
+}

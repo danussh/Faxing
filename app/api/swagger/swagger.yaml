@@ -1,0 +1,34 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Inboundfaxing
+  description: Receives inbound faxes from vendors and store into filecloud
+  license:
+    name: UNLICENSED
+basePath: /
+schemes:
+  - http
+produces:
+  - application/json
+paths:
+  /faxnumber/{faxnumber}:
+    get:
+      x-swagger-router-controller: app
+      description: Faxnumber management API.
+      operationId: get
+      parameters:
+      - name: faxnumber
+        description: faxnumber for which we are getting data
+        in: path
+        type: integer
+        required: true
+      responses:
+        "200":
+          description: "Fax number found"
+        "404":
+          description: "Fax number not found"
+        "500":
+          description: Error while retriving faxumber info
+        default:
+          description: Error payload.
+      

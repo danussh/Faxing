@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+'use strict'
+// Built ins
+const http = require('http');
+
+// Local
+const app = require('../app');
+const config = require('../lib/config');
+const logger = require('../lib/logger');
+const APIGateway = require('../app/services/gateway/apigateway');
+
+let port = config.get('port');
+app.set('port', port);
+
+let server = http.createServer(app);
+
+server.listen(port, () => {
+  APIGateway.register();
+});
+server.on('error', errorHandler);
+server.on('listening', listeningHandler);
+
+function resolveBind() {
+  let addr = server.address();
+  
+  return typeof addr === 'string'
+    ? `pipe ${addr}`
+    : `port ${addr.port}`;
+}
+
+function errorHandler(error) {
+  switch(error.code) {
+    case 'EACCES':
+    case 'EADDRINUSE':
+      logger.error(error);
+      logger.error(`server exiting with error code ${error.errno}`);
+      process.exit(error.errno);
+      break;
+    default:
+      throw error;
+  }
+}
+
+function listeningHandler() {
+  logger.info(`server listening on ${resolveBind()}`);
+}

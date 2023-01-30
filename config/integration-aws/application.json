@@ -1,0 +1,45 @@
+{
+  "postgres": {
+    "username": "inboundfaxing",
+    "passwordSecretsPath": {
+      "us-east-1": "iac/datafabric/integration/faxingservices/faxing-int-db-nonprod"
+    },
+    "host": {
+      "us-east-1": "faxing-int-db-nonprod.c0zfdtzbnxtg.us-east-1.rds.amazonaws.com"
+    },
+    "database": "inboundfaxing",
+    "port": "5432",
+    "schema": "inboundfaxing",
+    "createTable": false
+  },
+  "aws": {
+    "sqsFileuploadUrl": {
+      "us-east-1": "https://sqs.us-east-1.amazonaws.com/660811125625/faxing-77246f-int-fax_upload_trigger"
+    },
+    "s3bucket": {
+      "us-east-1": "inbound-fax-image-int"
+    },
+    "presignedUrl": {
+      "getObjectExpiryPath": "/integration/presigned_url/get_object_expiry",
+      "putObjectExpiryPath": "/integration/presigned_url/put_object_expiry"
+    },
+    "stuckFax": {
+      "retryInterval": "/integration/stuck_fax/retry_interval",
+      "maxRetryInterval": "/integration/stuck_fax/max_retry_interval",
+      "retryCronControlPath": "/integration/stuck_fax/allowRetryCronRun"
+    },
+    "validateMD5HexDigestPath": "/integration/validateMD5HexDigest"
+  },
+  "mdp": {
+    "mdpURL": "https://prodmirror.athenahealth.com",
+    "mdpPort": 443,
+    "mdpPath": "htservices_external/ecosystem/api/tokenproxy.esp/v1/"
+  },
+  "uiam": {
+    "serviceScopes": "athena/service/Athenanet.*",
+    "tokenEndpointURL": "https://athena.oktapreview.com/oauth2/ausc16vzbfqYFn4jP0h7/v1/token",
+    "clientIdPath": "/integration/faxing_gateway_client_id",
+    "clientSecretPath": "/integration/faxing_gateway_client_secret"
+  },
+  "secretKeyPath": "/integration/inbound_api_key"
+}

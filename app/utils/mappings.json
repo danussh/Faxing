@@ -1,0 +1,14 @@
+{
+	"faxPages" : "faxPages",
+	"callerNumber" : "callerNumber",
+	"calledNumber" : "calledNumber",
+	"transmissionStatus": "transmissionStatus",
+	"vendorFaxId": "vendorFaxId",
+	"transmissionDurationSeconds": "transmissionDurationSeconds",
+	"faxReceivedTimestamp": "faxReceivedTimestamp",
+	"callerANI": "callerANI",
+	"remoteId": "remoteId",
+	"isFaxPartial": "isFaxPartial",
+	"vendorName": "vendorName",
+	"vendorMetadata": "vendorMetadata"
+}

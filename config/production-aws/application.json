@@ -1,0 +1,49 @@
+{
+  "postgres": {
+    "username": "inboundfaxing",
+    "passwordSecretsPath": {
+      "us-east-1": "iac/datafabric/production/faxingservices/faxing-prod-db-prod",
+      "us-west-2": "iac/datafabric/production/faxingservices/faxing-us-west-2-prodw2-db-prod"
+    },
+    "host": {
+      "us-east-1": "faxing-prod-db-prod.cj8ant3bfjyf.us-east-1.rds.amazonaws.com",
+      "us-west-2": "faxing-us-west-2-prodw2-db-prod.cl5slpcijkgu.us-west-2.rds.amazonaws.com"
+    },
+    "database": "inboundfaxing",
+    "port": "5432",
+    "schema": "inboundfaxing",
+    "createTable": true
+  },
+  "aws": {
+    "sqsFileuploadUrl": {
+      "us-east-1": "https://sqs.us-east-1.amazonaws.com/820315363989/faxing-prod-fax_upload_trigger",
+      "us-west-2": "https://sqs.us-west-2.amazonaws.com/820315363989/faxing-prodw2-fax_upload_trigger"
+    },
+    "s3bucket": {
+      "us-east-1": "inbound-fax-image-prod",
+      "us-west-2": "inbound-fax-image-us-west-2-prodw2"
+    },
+    "presignedUrl": {
+      "getObjectExpiryPath": "/production/presigned_url/get_object_expiry",
+      "putObjectExpiryPath": "/production/presigned_url/put_object_expiry"
+    },
+    "stuckFax": {
+      "retryInterval": "/production/stuck_fax/retry_interval",
+      "maxRetryInterval": "/production/stuck_fax/max_retry_interval",
+      "retryCronControlPath": "/production/stuck_fax/allowRetryCronRun"
+    },
+    "validateMD5HexDigestPath": "/production/validateMD5HexDigest"
+  },
+  "mdp": {
+    "mdpURL": "https://apitest.athenahealth.com",
+    "mdpPort": 0,
+    "mdpPath": "v1/"
+  },
+  "uiam": {
+    "serviceScopes": "athena/service/Athenanet.*",
+    "tokenEndpointURL": "https://athena.okta.com/oauth2/auset0ja9xZ2Hniep296/v1/token",
+    "clientIdPath": "/production/faxing_gateway_client_id",
+    "clientSecretPath": "/production/faxing_gateway_client_secret"
+  },
+  "secretKeyPath": "/production/inbound_api_key"
+}

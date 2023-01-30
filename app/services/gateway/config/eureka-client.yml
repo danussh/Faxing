@@ -1,0 +1,9 @@
+instance:
+    metadata:
+        pub: 'false'
+        redirection: 'service'
+eureka:
+    servicePath: '/gateway/eureka/apps'
+    fetchRegistry: 'true'
+    maxRetries: 40
+    ssl: true
